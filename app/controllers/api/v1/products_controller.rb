@@ -46,7 +46,8 @@ class Api::V1::ProductsController < ApplicationController
       end
 
       def product_params
-        params.require(:product).permit(:id, :title, :description, :image, :price, :active)
+        params.permit(:id, :title, :description, :image, :price, :active)
+        #require(:product) removed because angular update does not work with it
       end
 
       def not_found
