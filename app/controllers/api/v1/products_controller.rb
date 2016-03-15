@@ -28,7 +28,7 @@ class Api::V1::ProductsController < ApplicationController
     end
 
     def update
-      if @product.update(product_params)
+      if @product.update(product_params_update)
         render json: @product, status: :ok
       else
         render json: @product.errors, status: :unprocessable_entity
@@ -46,6 +46,10 @@ class Api::V1::ProductsController < ApplicationController
       end
 
       def product_params
+        params.require(:product).permit(:id, :title, :description, :image, :price, :active)
+      end
+
+      def product_params_update
         params.permit(:id, :title, :description, :image, :price, :active)
         #require(:product) removed because angular update does not work with it
       end
