@@ -46,7 +46,7 @@ class Api::V1::ProductsController < ApplicationController
       end
 
       def product_params
-        params.require(:product).permit(:title, :description, :price, :image, :active)
+        params.require(:product).permit(:id, :title, :description, :image, :price, :active)
       end
 
       def not_found
